@@ -63,7 +63,7 @@ export default function App() {
           {/* 변환 칸 */}
           <div className="w-full flex flex-col items-center">
             {converts.map((convert, index) => (
-              <ConvertTable key={index} classCount={classCount} convert={convert} startTime={startTime} timeInterVal={timeInterval} setConverts={setConverts} />
+              <ConvertTable key={index} classCount={classCount} convert={convert} startTime={startTime} timeInterval={timeInterval} setConverts={setConverts} />
             ))}
           </div>
           <AddButton add={() => {
