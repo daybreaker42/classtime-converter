@@ -18,18 +18,22 @@ export default function App() {
    */
   function createConvert(currConvert?: converts): converts {
     return {
-      id: Date.now(), // ID를 타임스탬프로 변경
-      startClass: currConvert?.startClass,
-      endClass: currConvert?.endClass,
-      startTime: currConvert?.startTime,
-      endTime: currConvert?.endTime,
+      // 기존 id가 있다면 유지하고, 없다면 새로운 id 생성
+      id: currConvert?.id || Date.now(),
+      startClass: undefined,
+      endClass: undefined,
+      startTime: undefined,
+      endTime: undefined,
       isSelecting: false,
     };
   }
 
   useEffect(() => {
     setConverts((prevConverts) => {
-      return prevConverts.map((convert) => createConvert(convert));
+      return prevConverts.map((prevConvert) => ({
+        ...createConvert(),
+        id: prevConvert.id // 기존 id 유지
+      }));
     });
   }, [startTime, timeInterval]);
 
