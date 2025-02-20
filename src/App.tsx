@@ -5,13 +5,14 @@ import { classTime, converts } from './types';
 import Info from './components/Info';
 import AddButton from './components/AddButton';
 import ConvertTable from './components/ConvertTable';
-
+import TimeToClassTable from './components/TimeToClassTable';
 
 export default function App() {
   const classCount = 23;
   const [startTime, setStartTime] = useState('09:00');
   const [timeInterval, setTimeInterval] = useState(30);
   const [converts, setConverts] = useState<converts[]>(() => [createConvert()]);
+  const [timeConverts, setTimeConverts] = useState<{ id: number }[]>(() => [{ id: Date.now() }]);
 
   /**
    * Create a new converts object
@@ -76,6 +77,10 @@ export default function App() {
     setConverts(prevConverts => prevConverts.filter(convert => convert.id !== id));
   };
 
+  const handleTimeDelete = (id: number) => {
+    setTimeConverts(prev => prev.filter(convert => convert.id !== id));
+  };
+
   // converts 객체를 JSON 문자열로 변환하여 로그에 출력
   console.log(`converts: ${JSON.stringify(converts)}`);
 
@@ -134,6 +139,22 @@ export default function App() {
             });
           }
           } />
+          {/* 시간 -> 교시 변환 섹션 */}
+          <div className="w-full flex flex-col items-center mt-8">
+            <h2 className="text-2xl font-bold mb-4">시간 → 교시 변환</h2>
+            {timeConverts.map((convert) => (
+              <TimeToClassTable
+                key={convert.id}
+                id={convert.id}
+                startTime={startTime}
+                timeInterval={timeInterval}
+                onDelete={handleTimeDelete}
+              />
+            ))}
+            <AddButton add={() => {
+              setTimeConverts(prev => [...prev, { id: Date.now() }]);
+            }} />
+          </div>
         </main>
       </div>
       <Footer />
