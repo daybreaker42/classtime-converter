@@ -1,5 +1,5 @@
 import { converts, classTime } from "../types";
-import { calculateTime } from "../utils/timeCalculator"; // 새로 만들 유틸리티
+import { calculateTime } from "../utils/timeCalculator";
 
 interface ConvertTableProps {
     classCount: number;
@@ -13,14 +13,12 @@ export default function ConvertTable({ classCount, convert, startTime, timeInter
     // 교시 목록 생성
     let classTimes: classTime[] = [];
     for (let i = 1; i <= classCount; i++) {
-        const currTime = new Date(`2025-01-01T${startTime}`);
-        currTime.setMinutes(currTime.getMinutes() + timeInterval * (i - 1));
         classTimes.push({
             id: i,
             selected: (convert.startClass && convert.endClass) ?
                 (i >= convert.startClass && i <= convert.endClass) : false,
             class: i,
-            time: currTime.toTimeString().slice(0, 5),
+            time: calculateTime(i, startTime, timeInterval),
         });
     }
 
@@ -33,7 +31,7 @@ export default function ConvertTable({ classCount, convert, startTime, timeInter
                         return {
                             ...prevConvert,
                             startClass: time.class,
-                            startTime: time.time,
+                            startTime: calculateTime(time.class, startTime, timeInterval),
                             isSelecting: true,
                         };
                     }
@@ -47,8 +45,8 @@ export default function ConvertTable({ classCount, convert, startTime, timeInter
                             ...prevConvert,
                             startClass: start,
                             endClass: end,
-                            startTime: classTimes[start - 1].time,
-                            endTime: classTimes[end - 1].time,
+                            startTime: calculateTime(start, startTime, timeInterval),
+                            endTime: calculateTime(end, startTime, timeInterval),
                             isSelecting: false,
                         };
                     }
@@ -57,7 +55,7 @@ export default function ConvertTable({ classCount, convert, startTime, timeInter
                         ...prevConvert,
                         startClass: time.class,
                         endClass: undefined,
-                        startTime: time.time,
+                        startTime: calculateTime(time.class, startTime, timeInterval),
                         endTime: undefined,
                         isSelecting: true,
                     };
