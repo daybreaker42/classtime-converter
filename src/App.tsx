@@ -82,9 +82,9 @@ export default function App() {
   };
 
   // converts 객체를 JSON 문자열로 변환하여 로그에 출력
-  console.log(`converts: ${JSON.stringify(converts)}`);
+  // console.log(`converts: ${JSON.stringify(converts)}`);
 
-  console.log(`startTime: ${startTime}, timeInterval: ${timeInterval}`);
+  // console.log(`startTime: ${startTime}, timeInterval: ${timeInterval}`);
 
   return (
     <>
@@ -93,16 +93,16 @@ export default function App() {
           <Title />
           <div className="w-full flex justify-between mb-[30px]">
             {/* info */}
-            <Info title={"변환"} subInfo={[
+            <Info title={"시간표 기준"} subInfo={[
               {
-                title: "변환 공식",
-                value: "교시 = (시간 - 9) * 2 + 1",
+                title: "계산 방식",
+                value: "수업 시간 = 시작 시간 + ((교시-1) × 수업 길이)",
                 isDisabled: true,
               }
             ]} />
-            <Info title={"기본 설정"} subInfo={[
+            <Info title={"수업 시간 설정"} subInfo={[
               {
-                title: "1교시 시작 시각",
+                title: "1교시 시작",
                 value: startTime,
                 // onChange: handleStartTimeChange,
                 add10: handleStartTimeAdd10,
@@ -110,7 +110,7 @@ export default function App() {
                 isDisabled: false,
               },
               {
-                title: "교시 간격 (분)",
+                title: "수업 길이",
                 value: timeInterval.toString(),
                 // onChange: handleIntervalChange,
                 add10: handleIntervalAdd10,
@@ -143,7 +143,7 @@ export default function App() {
           </div>
           {/* 시간 -> 교시 변환 섹션 */}
           <div className="w-full flex flex-col items-center mt-8">
-            <h2 className="text-2xl font-bold mb-4">시간 → 교시 변환</h2>
+            <h2 className="text-2xl font-bold mb-4">수업 시간 확인하기</h2>
             {timeConverts.map((convert) => (
               <TimeToClassTable
                 key={convert.id}

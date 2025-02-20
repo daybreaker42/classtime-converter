@@ -10,8 +10,8 @@ export default function SubInfo({ title, value, isDisabled, add10, sub10 }: SubI
     return (
         <div className="flex flex-col">
             <span className="text-base sm:text-lg md:text-xl mb-2 sm:mb-3">{title}</span>
-            <div className="flex outline-none border border-black rounded-[10px] px-4 sm:px-[28px] py-1 sm:py-2 mb-1">
-                <span className="text-base sm:text-lg md:text-xl">{value}</span>
+            <div className="flex outline-none border border-black rounded-[10px] px-4 sm:px-[28px] py-1 sm:py-2 mb-1 max-w-[300px]">
+                <span className="text-base sm:text-lg md:text-xl whitespace-pre-wrap">{value}</span>
             </div>
             {!isDisabled && (
                 <div className="flex justify-center gap-1">

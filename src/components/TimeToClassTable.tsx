@@ -31,7 +31,7 @@ export default function TimeToClassTable({ startTime, timeInterval, id, onDelete
         <div className="w-full mt-4">
             <div className={cs.section.container}>
                 <div className="relative flex justify-between items-center mb-4">
-                    <span className="text-lg font-medium">시간 → 교시 변환</span>
+                    <span className="text-lg font-medium">시간으로 교시 찾기</span>
                     <button
                         onClick={() => onDelete(id)}
                         className={`${cs.colors.danger} ${cs.colors.dangerHover}`}
@@ -43,14 +43,14 @@ export default function TimeToClassTable({ startTime, timeInterval, id, onDelete
                 </div>
                 <input
                     type="text"
-                    placeholder="시간 입력 (예: 09:30)"
+                    placeholder="시간을 입력하세요 (예: 13:30)"
                     value={inputTime}
                     onChange={handleTimeInput}
                     className={cs.input.base}
                 />
                 {result !== null && (
                     <div className="text-center text-lg mt-4">
-                        {inputTime} = {result}교시
+                        입력한 {inputTime}는 {result}교시입니다
                     </div>
                 )}
             </div>

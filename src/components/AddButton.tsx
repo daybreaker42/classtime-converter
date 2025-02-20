@@ -11,7 +11,7 @@ export default function AddButton({ add }: AddButtonProps) {
             // mt-4를 my-4로 변경하여 위아래 여백을 동일하게 설정
             className={`my-4 ${cs.button.base} ${cs.button.primary} ${cs.button.size.md} ${cs.rounded.default}`}
         >
-            + 추가하기
+            + 시간표 추가
         </button>
     );
 }
