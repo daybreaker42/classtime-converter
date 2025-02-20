@@ -33,8 +33,45 @@ export default function App() {
     });
   }, [startTime, timeInterval]);
 
+  const handleStartTimeAdd10 = () => {
+    const [hours, minutes] = startTime.split(':').map(Number);
+    const newMinutes = minutes + 10;
+    const newHours = hours + Math.floor(newMinutes / 60);
+    if (newHours < 24) {
+      setStartTime(`${newHours.toString().padStart(2, '0')}:${(newMinutes % 60).toString().padStart(2, '0')}`);
+    }
+  };
+
+  const handleStartTimeSub10 = () => {
+    const [hours, minutes] = startTime.split(':').map(Number);
+    let newMinutes = minutes - 10;
+    let newHours = hours;
+    if (newMinutes < 0) {
+      newHours -= 1;
+      newMinutes += 60;
+    }
+    if (newHours >= 0) {
+      setStartTime(`${newHours.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')}`);
+    }
+  };
+
+  const handleIntervalAdd10 = () => {
+    if (timeInterval + 10 <= 120) {
+      setTimeInterval(timeInterval + 10);
+    }
+  };
+
+  const handleIntervalSub10 = () => {
+    if (timeInterval - 10 >= 10) {
+      setTimeInterval(timeInterval - 10);
+    }
+  };
+
   // converts 객체를 JSON 문자열로 변환하여 로그에 출력
   console.log(`converts: ${JSON.stringify(converts)}`);
+
+  console.log(`startTime: ${startTime}, timeInterval: ${timeInterval}`);
+
   return (
     <>
       <div className='w-full bg-white'>
@@ -52,11 +89,19 @@ export default function App() {
             <Info title={"기본 설정"} subInfo={[
               {
                 title: "1교시 시작 시각",
-                value: "09:00",
+                value: startTime,
+                // onChange: handleStartTimeChange,
+                add10: handleStartTimeAdd10,
+                sub10: handleStartTimeSub10,
+                isDisabled: false,
               },
               {
                 title: "교시 간격 (분)",
-                value: "30",
+                value: timeInterval.toString(),
+                // onChange: handleIntervalChange,
+                add10: handleIntervalAdd10,
+                sub10: handleIntervalSub10,
+                isDisabled: false,
               }
             ]} />
           </div>

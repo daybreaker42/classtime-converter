@@ -9,6 +9,7 @@ interface SubInfoProps {
     title: string;
     value: string;
     isDisabled?: boolean;
+    // onChange?: (value: string) => void;
     add10?: () => void;
     sub10?: () => void;
 }
