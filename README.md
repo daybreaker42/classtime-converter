@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# 수업 시간표 변환기 (Class Time Converter)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+교시와 실제 시간을 쉽게 변환할 수 있는 웹 애플리케이션입니다.
 
-Currently, two official plugins are available:
+## 주요 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **교시 ↔ 시간 변환**: 교시를 시간으로, 시간을 교시로 쉽게 변환
+- **유연한 시간 설정**:
+  - 1교시 시작 시간 조정 (기본값: 09:00)
+  - 수업 길이 조정 (기본값: 30분)
+- **다중 변환**: 여러 시간대를 동시에 변환 가능
+- **반응형 디자인**: 모바일, 태블릿, 데스크톱 지원
 
-## Expanding the ESLint configuration
+## 기술 스택
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
 
-- Configure the top-level `parserOptions` property like this:
+## 시작하기
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. 저장소 클론
+
+```bash
+git clone https://github.com/daybreaker42/classtime-converter.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. 의존성 설치
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install
 ```
+
+3. 개발 서버 실행
+
+```bash
+npm run dev
+```
+
+## 배포
+
+```bash
+npm run build
+```
+
+빌드된 파일은 `dist` 디렉토리에 생성됩니다.
+
+## 라이선스
+
+MIT License
+
+## 기여하기
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 연락처
+
+- 제작자: hansj
+- GitHub: [@daybreaker42](https://github.com/daybreaker42)
+- Email: <june12300039@gmail.com>
