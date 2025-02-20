@@ -71,6 +71,11 @@ export default function App() {
     }
   };
 
+  // 삭제 함수 추가
+  const handleDelete = (id: number) => {
+    setConverts(prevConverts => prevConverts.filter(convert => convert.id !== id));
+  };
+
   // converts 객체를 JSON 문자열로 변환하여 로그에 출력
   console.log(`converts: ${JSON.stringify(converts)}`);
 
@@ -112,7 +117,15 @@ export default function App() {
           {/* 변환 칸 */}
           <div className="w-full flex flex-col items-center">
             {converts.map((convert, index) => (
-              <ConvertTable key={index} classCount={classCount} convert={convert} startTime={startTime} timeInterval={timeInterval} setConverts={setConverts} />
+              <ConvertTable
+                key={index}
+                classCount={classCount}
+                convert={convert}
+                startTime={startTime}
+                timeInterval={timeInterval}
+                setConverts={setConverts}
+                onDelete={handleDelete}  // 삭제 함수 전달
+              />
             ))}
           </div>
           <AddButton add={() => {
