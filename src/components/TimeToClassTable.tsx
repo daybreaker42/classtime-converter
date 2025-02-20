@@ -34,7 +34,7 @@ export default function TimeToClassTable({ startTime, timeInterval, id, onDelete
                     <span className="text-lg font-medium">시간 → 교시 변환</span>
                     <button
                         onClick={() => onDelete(id)}
-                        className={`${cs.danger} ${cs.dangerHover}`}
+                        className={`${cs.colors.danger} ${cs.colors.dangerHover}`}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

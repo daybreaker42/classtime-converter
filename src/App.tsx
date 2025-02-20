@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Footer from './components/Footer'
 import Title from './components/Title'
-import { classTime, converts } from './types';
+import { converts } from './types';
 import Info from './components/Info';
 import AddButton from './components/AddButton';
 import ConvertTable from './components/ConvertTable';
