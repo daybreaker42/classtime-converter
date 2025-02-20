@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { calculateClass } from '../utils/timeCalculator';
+import { commonStyles as cs } from '../styles/common';
 
 interface TimeToClassTableProps {
     startTime: string;
@@ -28,12 +29,12 @@ export default function TimeToClassTable({ startTime, timeInterval, id, onDelete
 
     return (
         <div className="w-full mt-4">
-            <div className="flex flex-col w-full border border-black rounded-[10px] p-4">
+            <div className={cs.section.container}>
                 <div className="relative flex justify-between items-center mb-4">
                     <span className="text-lg font-medium">시간 → 교시 변환</span>
                     <button
                         onClick={() => onDelete(id)}
-                        className="text-red-500 hover:text-red-700"
+                        className={`${cs.danger} ${cs.dangerHover}`}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -45,10 +46,10 @@ export default function TimeToClassTable({ startTime, timeInterval, id, onDelete
                     placeholder="시간 입력 (예: 09:30)"
                     value={inputTime}
                     onChange={handleTimeInput}
-                    className="p-2 border border-gray-300 rounded-md mb-4"
+                    className={cs.input.base}
                 />
                 {result !== null && (
-                    <div className="text-center text-lg">
+                    <div className="text-center text-lg mt-4">
                         {inputTime} = {result}교시
                     </div>
                 )}

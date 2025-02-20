@@ -132,13 +132,15 @@ export default function App() {
                 onDelete={handleDelete}  // 삭제 함수 전달
               />
             ))}
+            {/* 버튼 컨테이너를 추가하여 가운데 정렬 */}
+            <div className="w-full flex justify-center">
+              <AddButton add={() => {
+                setConverts((prevConverts) => {
+                  return [...prevConverts, createConvert()];
+                });
+              }} />
+            </div>
           </div>
-          <AddButton add={() => {
-            setConverts((prevConverts) => {
-              return [...prevConverts, createConvert()];
-            });
-          }
-          } />
           {/* 시간 -> 교시 변환 섹션 */}
           <div className="w-full flex flex-col items-center mt-8">
             <h2 className="text-2xl font-bold mb-4">시간 → 교시 변환</h2>
@@ -151,9 +153,12 @@ export default function App() {
                 onDelete={handleTimeDelete}
               />
             ))}
-            <AddButton add={() => {
-              setTimeConverts(prev => [...prev, { id: Date.now() }]);
-            }} />
+            {/* 버튼 컨테이너를 추가하여 가운데 정렬 */}
+            <div className="w-full flex justify-center">
+              <AddButton add={() => {
+                setTimeConverts(prev => [...prev, { id: Date.now() }]);
+              }} />
+            </div>
           </div>
         </main>
       </div>
